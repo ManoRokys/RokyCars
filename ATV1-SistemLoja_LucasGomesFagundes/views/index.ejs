@@ -1,0 +1,65 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+<div class="container mt-4">
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/imgs/Slide1.jpg" class="d-block w-100" alt="Bem vindo à RokysCars">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Bem-vindo à RokysCars</h2>
+                    <p>Os melhores preços de carros para Gran Turismo 7.</p>
+                </div>
+            </div>
+            
+            <div class="carousel-item">
+                <img src="/imgs/Slide2.jpg" class="d-block w-100" alt="Carro Novo 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>NSX GT500</h2>
+                    <p>O mais recente lançamento para o Gran Turismo 7, com design futurista e desempenho superior.</p>
+                </div>
+            </div>
+            
+            <div class="carousel-item">
+                <img src="/imgs/Slide3.jpg" class="d-block w-100" alt="Carro Novo 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Honda Civic Type R</h2>
+                    <p>Este carro é a combinação perfeita de estilo e velocidade. Ideal para quem busca adrenalina no Gran Turismo 7.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
+
+    <hr>
+    <h2 class="text-white text-center mt-4" style="text-shadow: 2px 2px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">
+        Carros Adicionados Recentemente
+    </h2> 
+
+
+    <div class="car-grid">
+        <% produtos.slice(0, 3).forEach(produto => { %> 
+        <div class="car-card">
+            <img src="imgs/<%= produto.img %>.jpg" alt="Carro 1">
+            <p class="car-name"><%= produto.nome %></p>
+            <p class="car-price">Cr: <%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></p>
+        </div>
+        <% }) %>
+    </div>
+
+</div>
+    
+<%- include ('partials/footer.ejs') %>

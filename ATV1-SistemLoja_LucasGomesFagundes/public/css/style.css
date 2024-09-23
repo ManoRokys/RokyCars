@@ -1,0 +1,89 @@
+body {
+    background-color: #001f3f;
+    background-image: url('/imgs/wallpaper.jpg');  
+    background-position: center; 
+    background-size: 2200px;
+    background-repeat: no-repeat; 
+    height: 100vh; 
+    
+}
+
+ul {
+    list-style: square;
+    line-height: 30px;
+}
+
+a {
+    color:#0ba7c6;
+    text-decoration: none;
+    padding: 20px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+footer {
+    text-align: center;  
+    color: #fff;  
+}
+.profile-img {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+.carousel-caption h2, .carousel-caption p {
+    color: white;
+    text-shadow: 
+        1px 1px 0 black,  
+        -1px -1px 0 black, 
+        -1px 1px 0 black,  
+        1px -1px 0 black;  
+}
+
+.navbar {
+    background-color: #001f3f;
+}
+
+.navbar-brand img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.car-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+}
+
+.car-card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.car-name {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.car-price, #preco {
+    font-size: 16px;
+    color: #28a745;
+}
