@@ -1,0 +1,27 @@
+<%- include ('partials/header.ejs')%>
+<%- include ('partials/navbar.ejs')%>
+ 
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-body">
+                <h1>Editar Jogador</h1>
+                <hr>
+            </div>
+            <div class="card-body">
+                <form action="/clientes/update" method="POST">
+                    <label>Nome do Jogador: </label>
+                    <input class="form-control" type="text" name="nome" id="nome" value="<%= cliente.nome %>" required>
+                    <label>País do Jogador: </label>
+                    <input class="form-control" type="text" name="country" id="country" value="<%= cliente.country %>" required>
+                    <input type="hidden" name="id" value="<%= cliente.id %>">
+                    <br>
+                    <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm('Confirma as alterações para o Jogador: <%= cliente.nome %>')">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<%- include ('partials/footer.ejs')%>
+ 

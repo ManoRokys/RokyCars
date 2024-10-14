@@ -1,0 +1,37 @@
+<%- include ('partials/header.ejs') %> 
+<%- include ('partials/navbar.ejs') %>
+ 
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Cadastrar Jogador</h1>
+    </div>
+    <div class="card-body">
+      <form action="/clientes/new" method="post">
+        <label>Nome do Jogador:</label>
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          placeholder="Insira o nome do Jogador"
+          class="form-control"
+          required
+        />
+        <label>País do Jogador:</label>
+        <input
+          type="text"
+          name="country"
+          id="country"
+          placeholder="Insira o País do Jogador"
+          class="form-control"
+          required
+        />
+        <input type="hidden" name="img" id="img" value="avatar.png" />
+        <br />
+        <input type="submit" class="btn btn-success" value="Cadastrar" />
+      </form>
+    </div>
+  </div>
+</div>
+ 
+<%- include ('partials/footer.ejs') %>

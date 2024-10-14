@@ -3,24 +3,28 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h1>Pedidos</h1>
+                <a href="/pedidos/novo" class="btn btn-success">Adicionar Pedido</a>
             </div>
             <div class="card-body">
                 <table>
                     <thead>
                         <tr>
                             <th></th>
-                            <th>ID Jogador:</th>
+                            <th>ID da Compra:</th>
                             <th>Valor:</th>
+                            <th colspan="2">Ações:</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% pedidos.forEach(pedido => { %>
                         <tr>
                             <td><img src="imgs/order.png" width="30px"></td>
-                            <td><%= pedido.ID %></td>
-                            <td>Cr: <%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                            <td><%= pedido.id %></td>
+                            <td>Cr: <%= pedido.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
+                            <td><a style="color: chocolate;" href="/pedidos/edit/<%= pedido.id %>">Editar</a></td>
+                            <td><a style="color: crimson;" href="/pedidos/delete/<%= pedido.id %>" onclick="return confirm('Quer mesmo deletar o Pedido <%= pedido.id %>?')">Deletar</a></td>
                         </tr>
                         <% }) %>
                     </tbody>

@@ -3,8 +3,9 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h1>Jogadores</h1>
+            <a href="/clientes/novo" class="btn btn-success">Adicionar Jogador</a>
         </div>
         <div class="card-body">
             <table>
@@ -14,15 +15,18 @@
                         <th>Nome:</th>
                         <th>ID:</th>
                         <th>País:</th>
+                        <th colspan="2">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% clientes.forEach(cliente => { %>
                         <tr>
-                            <td><img src="imgs/<%= cliente.img %>.jpg" class="profile-img" alt="<%= cliente.nome %>"></td>
+                            <td><img src="imgs/<%= cliente.img %>" class="profile-img" alt="<%= cliente.nome %>"></td>
                             <td><%= cliente.nome %></td>
-                            <td><%= cliente.ID %></td>
+                            <td><%= cliente.id %></td>
                             <td><%= cliente.country %></td>
+                            <td><a style="color: orange" href="/clientes/edit/<%= cliente.id %>">Editar</a></td>
+                            <td><a style="color: red" href="/clientes/delete/<%= cliente.id %>" onclick="return confirm('Quer mesmo deletar o Jogador: <%= cliente.nome %>?')">Deletar</a></td>
                         </tr>
                     <% }) %>
                 </tbody>
@@ -30,5 +34,6 @@
         </div>
     </div>
 </div>
+
 
 <%- include ('partials/footer.ejs') %>

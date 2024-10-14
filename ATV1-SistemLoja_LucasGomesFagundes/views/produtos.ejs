@@ -3,21 +3,24 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-header">
-            <h1>Carros para Compra</h1>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1>Carros para Comprar</h1>
+            <a href="/produtos/novo" class="btn btn-success">Adicionar Carro</a>
         </div>
         <div class="card-body">
             <div class="row">
                 <% produtos.forEach(produto => { %>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="imgs/<%= produto.img %>.jpg" class="card-img-top" alt="<%= produto.nome %>">
+                        <img src="imgs/<%= produto.img %>" class="card-img-top" alt="<%= produto.nome %>">
                         <div class="card-body">
                             <h5 class="card-title"><%= produto.nome %></h5>
                             <p class="card-text"><%= produto.descricao %></p>
                             <p class="card-text" id="preco">
-                                <strong>Cr:</strong> <%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <strong>Cr:</strong> <%= produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %>
                             </p>
+                            <a style="color: chocolate;" href="/produtos/edit/<%= produto.id %>">Editar</a>
+                            <a style="color: crimson;" href="/produtos/delete/<%= produto.id %>" onclick="return confirm('Quer mesmo deletar o Carro: <%= produto.nome %>?')">Deletar</a>
                         </div>
                     </div>
                 </div>

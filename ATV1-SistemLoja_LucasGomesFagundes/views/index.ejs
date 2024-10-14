@@ -53,9 +53,9 @@
     <div class="car-grid">
         <% produtos.slice(0, 3).forEach(produto => { %> 
         <div class="car-card">
-            <img src="imgs/<%= produto.img %>.jpg" alt="Carro 1">
+            <img src="imgs/<%= produto.img %>" alt="Carro 1">
             <p class="car-name"><%= produto.nome %></p>
-            <p class="car-price">Cr: <%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></p>
+            <p class="car-price">Cr: <%= produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></p>
         </div>
         <% }) %>
     </div>

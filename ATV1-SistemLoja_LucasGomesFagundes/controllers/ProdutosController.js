@@ -1,8 +1,93 @@
 import express from 'express'
 const router = express.Router()
 
+import Produto from "../models/Produto.js";
+
+router.get("/produtos", function (req, res) {
+    Produto.findAll().then(produtos => {
+  res.render("produtos", {
+    produtos: produtos,
+  });
+});
+});
+
+router.get("/produtos/novo", (req, res) => {
+    res.render("produtosNew");
+});
+
+
+router.get("/", function (req, res) {
+    Produto.findAll().then(produtos => {
+  res.render("index", {
+    produtos: produtos,
+  });
+});
+});
+
+router.post("/produtos/new",(req,res) => {
+    const img = req.body.img
+    const nome = req.body.nome
+    const preco = req.body.preco
+    const descricao = req.body.descricao
+    Produto.create({
+        img : img,
+        nome :  nome,
+        preco : preco,
+        descricao : descricao,
+    }).then(() => {
+        res.redirect("/produtos")
+    })
+})
+
+router.get("/produtos/delete/:id", (req,res) => {
+    const id = req.params.id
+    Produto.destroy({
+        where: {
+            id : id
+        }
+    }).then(() =>{
+        res.redirect("/produtos")
+    }).catch(error => {
+        console.log(error)
+    })
+})
+
+router.get("/produtos/edit/:id", (req, res) => {
+    const id = req.params.id;
+    Produto.findByPk(id).then((produto) => {
+      res.render("produtoEdit", { produto : produto });
+    }).catch((error) =>{
+      console.log(error)
+    })
+  });
+
+  router.post("/produtos/update/", (req, res) => {
+    const id = req.body.id
+    const img = req.body.img
+    const nome = req.body.nome
+    const preco = req.body.preco
+    const descricao = req.body.descricao
+    Produto.update({
+        img : img,
+        nome :  nome,
+        preco : preco,
+        descricao : descricao,
+    },
+    {where: {id : id}}
+    ).then(() => {
+        res.redirect("/produtos");
+    }).catch((error) => {
+        console.log(error)
+    })
+})
+
+export default router;
+
+
+
+
 // ROTA PRODUTOS
-router.get("/produtos", function(req,res){
+/*router.get("/produtos", function(req,res){
     const produtos = [
         {img: "corvette",nome: "Chevrolet Corvette CR7", preco: "120.000,00", descricao: "Com um design aerodinâmico e agressivo, apresenta um motor potente, oferecendo desempenho excepcional."},
         {img: "huracan",nome: "Lamborghini Huracán", preco: "500.000,00", descricao: "Equipado com um motor V10 potente, oferece aceleração impressionante e uma experiência de condução emocionante."},
@@ -28,4 +113,4 @@ router.get("/", function(req,res){
         produtos: produtos
     })
 })
-export default router
+export default router*/

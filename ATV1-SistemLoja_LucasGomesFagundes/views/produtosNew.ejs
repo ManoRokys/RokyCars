@@ -1,0 +1,46 @@
+<%- include ('partials/header.ejs') %> 
+<%- include ('partials/navbar.ejs') %>
+ 
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Adicionar Carro Novo no Catalogo</h1>
+    </div>
+    <div class="card-body">
+      <form action="/produtos/new" method="post">
+        <label>Nome do Carro:</label>
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          placeholder="Insira o nome do Carro"
+          class="form-control"
+          required
+        />
+        <label>Preço do Carro:</label>
+        <input
+          type="number"
+          name="preco"
+          id="preco"
+          placeholder="Insira o Preço do Carro"
+          class="form-control"
+          required
+        />
+        <label>Descrição do Carro:</label>
+        <input
+          type="text"
+          name="descricao"
+          id="descricao"
+          placeholder="Insira uma breve descrição do Carro"
+          class="form-control"
+          required
+        />
+        <input type="hidden" name="img" id="img" value="car.jpg" />
+        <br />
+        <input type="submit" class="btn btn-success" value="Cadastrar" />
+      </form>
+    </div>
+  </div>
+</div>
+ 
+<%- include ('partials/footer.ejs') %>
