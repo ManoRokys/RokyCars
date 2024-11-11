@@ -2,20 +2,21 @@ import express from 'express'
 const router = express.Router()
 
 import Cliente from "../models/Cliente.js";
+import Auth from "../middleware/Auth.js";
 
-router.get("/clientes", function (req, res) {
+router.get("/clientes", Auth, (req, res) => {
     Cliente.findAll().then((clientes) => {
       res.render("clientes", {
         clientes: clientes,
       });
     });
   });
-router.get("/clientes/novo", (req, res) => {
+router.get("/clientes/novo", Auth,(req, res) => {
     res.render("clientesNew");
 });
 
 
-  router.post("/clientes/new", (req, res) => {
+  router.post("/clientes/new", Auth, (req, res) => {
     const img = req.body.img;
     const nome = req.body.nome;
     const country = req.body.country;
@@ -28,7 +29,7 @@ router.get("/clientes/novo", (req, res) => {
       });
     });
 
-    router.get("/clientes/delete/:id", (req, res) => {
+    router.get("/clientes/delete/:id", Auth, (req, res) => {
         const id = req.params.id;
     Cliente.destroy({
         where: {
@@ -43,7 +44,7 @@ router.get("/clientes/novo", (req, res) => {
             });
         });
 
-    router.get("/clientes/edit/:id", (req, res) => {
+    router.get("/clientes/edit/:id", Auth, (req, res) => {
         const id = req.params.id;
     Cliente.findByPk(id).then((cliente) => {
               res.render("clienteEdit", { cliente: cliente });
@@ -53,7 +54,7 @@ router.get("/clientes/novo", (req, res) => {
           });
 
 
-    router.post("/clientes/update/", (req, res) => {
+    router.post("/clientes/update/", Auth, (req, res) => {
         const id = req.body.id
         const nome = req.body.nome
         const country = req.body.country
@@ -69,29 +70,3 @@ router.get("/clientes/novo", (req, res) => {
             })
         })
 export default router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*router.get("/clientes", function(req,res){    
-    const clientes = [
-        {img:"roky", nome: "RokyLobinho", ID: "12345678900", country: "Brazil"},
-        {img:"bk",nome: "BK4", ID: "98765432100", country: "Slovakia"},
-        {img:"viny",nome: "VinyTyphon", ID: "45678912300", country: "Brazil"},
-        {img:"rofl",nome: "RoflWaffle", ID: "32165498700", country: "United Kingdom"}
-    ]
-    res.render("clientes", {
-        clientes: clientes
-    })
-})
-
-export default router */
